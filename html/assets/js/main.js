@@ -38,7 +38,7 @@ jQuery(document).ready(function($) {
     $('.parallax-el').paroller();
 
     $(window).scroll(function() {
-    	var scrollDistance = $(window).scrollTop();
+    	var scrollDistance = $(window).scrollTop() + 10;
 
     	$('section').each(function(i) {
     		if ($(this).position().top <= scrollDistance) {

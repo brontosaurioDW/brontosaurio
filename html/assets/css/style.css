@@ -391,7 +391,7 @@ footer img {
 	    right: 0;
 	    top: 0;
 	    padding: 3.5vh 5vw;
-	    background: rgba(255, 255, 255, 0.3);
+	    background: rgba(255, 255, 255, 0.95);
 	}
 
 	header li.active:after {
@@ -446,6 +446,7 @@ footer img {
 
 	header .menu {
 		display: none;
+		margin-top: 35px;
 	}
 
 	.menu-mobile {
