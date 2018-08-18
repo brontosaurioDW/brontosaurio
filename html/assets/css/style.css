@@ -131,6 +131,10 @@ header .lg-menu li a {
 	color: #fff;
 }
 
+.menu-mobile {
+	display: none;
+}
+
 /*  jumbotron  */
 
 .logo {
@@ -442,6 +446,12 @@ footer img {
 
 	header .menu {
 		display: none;
+	}
+
+	.menu-mobile {
+		display: block;
+		font-size: 20px;
+		color: #555;
 	}
 
 	.logo h1 {
