@@ -344,13 +344,28 @@ footer img {
 	}
 
 	section {
-	    padding: 3vh 5vw;
+		padding: 2vh 5vw;
+		height: auto;
+		min-height: unset;
+	}
+
+	.section-wrapper {
+		min-height: unset;
+		border: 0;
 	}
 
 	.info-section {
 	    padding: 5vh 7vw;
 	    width: 100vw;
 	    text-align: center;
+	}
+
+	.info-section p {
+	    line-height: 170%;
+	}
+
+	.about ul {
+	    justify-content: center;
 	}
 
 	.services li {
