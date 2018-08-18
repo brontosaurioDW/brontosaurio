@@ -44,16 +44,12 @@ jQuery(document).ready(function($) {
     		if ($(this).position().top <= scrollDistance) {
     			$('.menu li.active').removeClass('active');
     			$('.menu li').eq(i).addClass('active');
-
-    			$('section').removeClass('active_section');
-    			$(this).addClass('active_section');
-    		}
-
-    		if ($('.active_section').hasClass('dk-bg')) {
-    			$('.menu').addClass('lg-menu');
-    		} else {
-    			$('.menu').removeClass('lg-menu');
     		}
     	});
     }).scroll();
+
+    $('.menu-mobile').on('click', function(event) {
+        event.preventDefault();
+        $('.menu').slideToggle();
+    });
 });
