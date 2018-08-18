@@ -421,3 +421,10 @@ body {
 		padding: 4em 3em 2em;
 	}
 }
+
+@media screen and (max-width: 991px) {
+	.content--open, 
+	.content__item--current {
+	    overflow: scroll;
+	}
+}
