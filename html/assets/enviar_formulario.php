@@ -4,7 +4,7 @@ $enviaPara = 'hola@brontosaurio.com.ar';
 $subject = 'Contacto brontosario.com.ar'; 
 
 //ruta relativa desde ESTE documento al html que quiero que se abra después de mandar el mail
-$enviado="../index.html#enviado";
+$enviado="../index.html";
 
 
 

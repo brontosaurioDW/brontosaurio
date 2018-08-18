@@ -13,7 +13,6 @@
 	
 		<!-- Header -->
 		<header>
-			<i class="fas fa-bars menu-mobile"></i>
 			<nav>
 				<ul class="menu">
 					<li>
@@ -326,13 +325,13 @@
 						<div class="col-right">
 							<form action="assets/enviar_formulario.php" method="post" enctype="multipart/form-data">
 								<div class="row">
-									<input type="text" name="nombreapellido" placeholder="Nombre y apellido">
+									<input type="text" name="nombreapellido" placeholder="Nombre y apellido" required>
 								</div>
 								<div class="row">
-									<input type="text" name="email" placeholder="Email">
+									<input type="text" name="email" placeholder="Email" required>
 								</div>
 								<div class="row">
-									<textarea rows="10" cols="10" placeholder="Mensaje"></textarea>
+									<textarea rows="10" cols="10" placeholder="Mensaje" required></textarea>
 								</div>
 								<div class="row">
 									<input type="submit" value="enviar">
@@ -343,21 +342,7 @@
 				</div>
 			</div>
 		</section>
-		<!-- Sent modal -->
-
-<div class="modal fade" id="enviado" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Thank you for pre-registering!</h4>
-      </div>
-      <div class="modal-body">
-          <p>Thanks for getting in touch!</p>                     
-      </div>    
-    </div>
-  </div>
-</div>
+		<!-- ... -->
 		
 		<!-- Footer -->
 		<footer>
