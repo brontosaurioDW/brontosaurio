@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -13,15 +15,15 @@ body {
 
 section {
 	position: relative;
-	overflow: hidden;
-	min-height: 100vh;
-	width: 100%;
-	padding: 9vh 2vw 4vh;
+    overflow: hidden;
+    min-height: 100vh;
+    width: 100%;
+    padding: 3vh 2vw 3vh 4vw;
 }
 
 .section-wrapper {
-	border: 1px solid #fff;
-	min-height: calc(100vh - 14vh);
+    border: 1px solid #fff;
+	min-height: calc(100vh - 8vh);
 
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -36,6 +38,7 @@ section {
 }
 
 .violet-bg {
+	outline: none;
 	background: #6c257b;
 	background: -moz-linear-gradient(top, #6c257b 0%, #4b0958 100%);
 	background: -webkit-linear-gradient(top, #6c257b 0%,#4b0958 100%);
@@ -44,6 +47,7 @@ section {
 }
 
 .grey-bg {
+	outline: none;
 	background: #2f2f2f;
 	background: -moz-linear-gradient(top, #2f2f2f 0%, #171717 100%);
 	background: -webkit-linear-gradient(top, #2f2f2f 0%,#171717 100%);
@@ -67,12 +71,39 @@ section {
 
 header {
 	position: fixed;
-    z-index: 300;
-    left: 0;
-    top: 0;
-    right: 0;
-    padding: 3vh 2vw;
-    background: white;
+	z-index: 10;
+	top: 65vh;
+	left: 25px;
+	margin-top: 0;
+}
+
+header h1 {
+	display: inline-block;
+	vertical-align: bottom;
+	margin-right: 5px;
+	position: fixed;
+	bottom: 4.5vh;
+	left: 1.5vw;
+}
+
+header h1 a {
+    display: block;
+    font-size: 0;
+    color: transparent;
+    width: 32px;
+    height: 32px;
+    background: url(../img/dino-verde.png) no-repeat 0 0 transparent;
+    background-size: 100%;
+}
+
+header nav {
+	position: relative;
+	top: -3px;
+	display: inline-block;
+	transform: rotate(-90deg) translateZ(0);
+	transform-origin: left top 0;
+	float: left;
+	white-space: nowrap;
 }
 
 header li {
@@ -101,19 +132,6 @@ header li.active {
 	position: relative;
 }
 
-header li.active:after {
-	position: absolute;
-	opacity: 1;
-	top: -2vw;
-	right: 0;
-	width: 0;
-	height: 0;
-	border: 0 solid transparent;
-	border-left-width: 25px;
-	border-right-width: 0px;
-	border-top: 30px solid #00b6b4;
-}
-
 header a {
 	color: #333;
 	font-size: 14px;
@@ -131,9 +149,6 @@ header .lg-menu li a {
 	color: #fff;
 }
 
-.menu-mobile {
-	display: none;
-}
 
 /*  jumbotron  */
 
@@ -386,7 +401,7 @@ footer img {
 }
 
 @media screen and (max-width: 1199px) {
-	header {
+/*	header {
 		left: 0;
 	    right: 0;
 	    top: 0;
@@ -396,7 +411,7 @@ footer img {
 
 	header li.active:after {
 	    border-top: 15px solid #00b6b4;
-	}
+	}*/
 
 	section {
 		padding-top: 11vh;
@@ -429,7 +444,7 @@ footer img {
 
 @media screen and (max-width: 767px) {
 
-	header li {
+	/*header li {
 		display: block;
 		border-left: 0;
 		padding-left: 0;
@@ -447,13 +462,7 @@ footer img {
 	header .menu {
 		display: none;
 		margin-top: 35px;
-	}
-
-	.menu-mobile {
-		display: block;
-		font-size: 20px;
-		color: #555;
-	}
+	}*/
 
 	.logo h1 {
 	    width: 240px;

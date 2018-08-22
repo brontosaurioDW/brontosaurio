@@ -12,7 +12,8 @@
 
 	'use strict';
 
-	var bodyEl = document.body, 
+	var wrapperEl = document.getElementById('portfolio'), 
+		bodyEl = document.body,
 		docElem = window.document.documentElement,
 		support = { transitions: Modernizr.csstransitions },
 		// transition end event name
@@ -136,18 +137,18 @@
 		applyTransforms(zoomer);
 		// also scale the body so it looks the camera moves to the item.
 		if( bodyScale ) {
-			dynamics.animate(bodyEl, { scale: bodyScale }, { type: dynamics.easeInOut, duration: 500 });
+			dynamics.animate(wrapperEl, { scale: bodyScale }, { type: dynamics.easeInOut, duration: 500 });
 		}
 		// after the transition is finished:
 		onEndTransition(zoomer, function() {
 			// reset body transform
 			if( bodyScale ) {
-				dynamics.stop(bodyEl);
-				dynamics.css(bodyEl, { scale: 1 });
+				dynamics.stop(wrapperEl);
+				dynamics.css(wrapperEl, { scale: 1 });
 				
 				// fix for safari (allowing fixed children to keep position)
-				bodyEl.style.WebkitTransform = 'none';
-				bodyEl.style.transform = 'none';
+				wrapperEl.style.WebkitTransform = 'none';
+				wrapperEl.style.transform = 'none';
 			}
 			// no scrolling
 			classie.add(bodyEl, 'noscroll');
@@ -175,8 +176,8 @@
 				
 		if( bodyScale ) {
 			// reset fix for safari (allowing fixed children to keep position)
-			bodyEl.style.WebkitTransform = '';
-			bodyEl.style.transform = '';
+			wrapperEl.style.WebkitTransform = '';
+			wrapperEl.style.transform = '';
 		}
 
 		/* fix for safari flickering */
@@ -209,8 +210,8 @@
 			}, 25);
 
 			if( bodyScale ) {
-				dynamics.css(bodyEl, { scale: bodyScale });
-				dynamics.animate(bodyEl, { scale: 1 }, {
+				dynamics.css(wrapperEl, { scale: bodyScale });
+				dynamics.animate(wrapperEl, { scale: 1 }, {
 					type: dynamics.easeInOut,
 					duration: 500
 				});
