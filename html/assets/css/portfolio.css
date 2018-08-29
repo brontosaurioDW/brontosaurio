@@ -437,3 +437,49 @@ button.slick-prev:hover {
 	-webkit-transition-duration: 1.7s;
 	transition-duration: 1.7s;
 }
+
+
+@media screen and (max-width: 767px) {	
+
+	.content__item img {
+		max-width: 80%;
+	}
+
+	.arrows {
+	    left: 15px;
+	    right: 15px;
+	}
+}
+
+
+@media screen and (max-width: 991px) {
+	
+	.content__item {
+		display: block;
+		width: 90%;
+		text-align: center;
+	}
+
+	.content__item img {
+		display: block;
+		margin: 0 auto 20px;
+	}
+
+	.content {
+	    width: 100%;
+	    margin-left: 0;
+	}
+
+	.content h2 {
+	    font-size: 1.8em;
+	    font-weight: bold;
+	}
+
+	.content h3 {
+		font-size: 1.5em;
+	}
+
+	.content p {
+		font-size: 1em;
+	}
+}

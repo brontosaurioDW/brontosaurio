@@ -1,78 +1,126 @@
-jQuery(document).ready(function($) {
-	
-    /*  SMOOTH SCROLL  */
-    $('a[href*="#"]')
-    	.not('[href="#"]')
-    	.not('[href="#0"]')
-    	.on('click', function(event) {
-            if (
-                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
-                location.hostname == this.hostname
-            ) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {                    
-                    event.preventDefault();
-                    $('html, body').animate({
-                        scrollTop: target.offset().top
-                    }, 1500, function() {
-                        var $target = $(target);
-                        $target.focus();
-                        if ($target.is(":focus")) {
-                            return false;
-                        } else {
-                            $target.attr('tabindex', '-1'); 
-                            $target.focus(); 
-                        };
-                    });
-                }
-            }
+$(document).ready(function() {
+    $(document).on("scroll", onScroll);
+    $(document).on("scroll", changeMenuColor);
+
+    //smoothscroll
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+
+        $(document).off("scroll");
+
+        var parentItem = $(this).parent('li');
+
+        $('li').each(function() {
+            $(this).removeClass('active');
         });
 
-    $(window).scroll(function() {
-    	var scrollDistance = $(window).scrollTop() + 10;
+        $(parentItem).addClass('active');
 
-    	$('section').each(function(i) {
-    		if ($(this).position().top <= scrollDistance) {
-    			$('.menu li.active').removeClass('active');
-    			$('.menu li').eq(i).addClass('active');
-    		}
-    	});
-    }).scroll();
+        var target = this.hash,
+            menu = target;
 
-    /*  PARALLAX  */
-    var s = skrollr.init({forceHeight: false});
+        $target = $(target);
+        
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top + 10
+        }, 1000, 'swing', function() {
+            window.location.hash = '';
+            $(document).on("scroll", onScroll);
+        });
+    });
+
+    var hamburger = $('#hamburger-icon');
+    hamburger.on('click', function() {
+        hamburger.toggleClass('active');
+
+        $('nav').slideToggle().toggleClass('open');
+
+        $('nav.open a').on('click', function() {
+            hamburger.removeClass('active');
+
+            $('nav').slideUp().removeClass('open');
+        });
+
+        return false;
+    });
 
     /*  SLIDER PORTFOLIO  */
     $('.slider').slick({
         dots: false,
         infinite: true,
-        speed: 2000,
+        speed: 1700,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 4000,
+        autoplaySpeed: 6000,
         arrows: true,
         adaptiveHeight: true,
         prevArrow: $('.prev'),
         nextArrow: $('.next')
     });
+    
+    /*  PARALLAX  */
+    var s = skrollr.init({
+        forceHeight: false
+    });
 
-    /*  ANIMATE with AOS */
-    AOS.init({
-        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-        startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
-        initClassName: 'aos-init', // class applied after initialization
-        animatedClassName: 'aos-animate', // class applied on animation
-        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+    if ($(window).width() > 991) {
+        Animate();
+    }
 
-        // Settings that can be overriden on per-element basis, by `data-aos-*` attributes:
-        offset: 250, // offset (in px) from the original trigger point
-        delay: 0, // values from 0 to 3000, with step 50ms
-        duration: 900, // values from 0 to 3000, with step 50ms
-        easing: 'ease', // default easing for AOS animations
-        once: false, // whether animation should happen only once - while scrolling down
-        mirror: false, // whether elements should animate out while scrolling past them
-        anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+    $(window).on('scroll', function(event) {
+        if ($(window).width() > 991) {
+            Animate();
+        }
     });
 });
+
+function Animate() {
+    /*  ANIMATE with AOS */
+    AOS.init({
+        disable: false,
+        startEvent: 'DOMContentLoaded',
+        initClassName: 'aos-init',
+        animatedClassName: 'aos-animate',
+        useClassNames: false,
+        offset: 250,
+        delay: 0,
+        duration: 900,
+        easing: 'ease',
+        once: false,
+        mirror: false,
+        anchorPlacement: 'top-bottom',
+    });
+}
+
+function onScroll(event) {
+    var scrollPos = $(document).scrollTop();
+    $('.menu li').each(function() {
+        var currLink = $(this).find('a');
+        var refElement = $(currLink.attr("href"));
+        if (refElement.position().top <= scrollPos + 10 && refElement.position().top + refElement.height() > scrollPos) {
+            $('.menu li').removeClass("active");
+            $(this).addClass("active");
+        } else {
+            $(this).removeClass("active");
+        }
+    });
+
+    if ($(window).scrollTop() > 800) {}
+}
+
+function changeMenuColor() {
+
+    var scrollPos = $(document).scrollTop();
+
+    var portfolioSection    = $('#portfolio').position().top + 10,
+        porfolioHeight      = $('#portfolio').outerHeight(),
+        contactSection      = $('#contact').position().top + 10,
+        contactHeight       = $('#contact').outerHeight();
+
+    if (portfolioSection <= scrollPos && portfolioSection + porfolioHeight > scrollPos) {
+        $('.menu').removeClass('lg-menu');
+    } else {
+        $('.menu').addClass('lg-menu');
+    }
+}

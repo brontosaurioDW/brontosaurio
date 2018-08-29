@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="assets/css/portfolio.css">
 		<link rel="stylesheet" href="assets/css/slick.css">
 		<link rel="stylesheet" href="assets/css/parallax.css">
-		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		<!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
@@ -21,19 +21,22 @@
 					<a href="#parallax">Brontosaurio</a>
 				</h1>
 
-				<nav id="nav" class="nav__toggle">
+				<div id="hamburger-icon" class="menu-mobile" href="#" title="Menu">
+					<span class="line line-1"></span>
+					<span class="line line-2"></span>
+					<span class="line line-3"></span>
+				</div>
+
+				<nav id="nav">
 					<ul class="menu" id="menu">
 						<li>
-							<a href="#contact">Contacto</a>
-						</li>
-						<li>
-							<a href="#about">Sobre nosotros</a>
-						</li>
-						<li>
-							<a href="#services">Servicios</a>
-						</li>
-						<li>
 							<a href="#portfolio">Trabajos</a>
+						</li><li>
+							<a href="#services">Servicios</a>
+						</li><li>
+							<a href="#about">Sobre nosotros</a>
+						</li><li>
+							<a href="#contact">Contacto</a>
 						</li>
 					</ul>
 				</nav>
@@ -56,11 +59,11 @@
 						<img src="assets/img/triangles/triangle-1.png" alt="shape">
 					</span>
 
-					<span class="parallax-el tr2 zi2" data-0="left: -15vw; bottom: -65vh;" data-250="bottom: -20vh;">
+					<span class="parallax-el tr2 zi2 hide-mobile" data-0="left: -15vw; bottom: -65vh;" data-250="bottom: -20vh;">
 						<img src="assets/img/triangles/triangle-2.png" alt="shape">
 					</span>
 
-					<span class="parallax-el tr3 zi2" data-0="right: -20vw; top: -30vh;" data-150="top: -70vh;">
+					<span class="parallax-el tr3 zi2 hide-mobile" data-0="right: -20vw; top: -30vh;" data-150="top: -70vh;">
 						<img src="assets/img/triangles/triangle-3.png" alt="shape">
 					</span> 
 
@@ -68,11 +71,11 @@
 						<img src="assets/img/triangles/triangle-4.png" alt="shape">
 					</span>
 
-					<span class="parallax-el tr5" data-0="right: 22vw; top: 64vh;" data-200="top: 30vh;">
+					<span class="parallax-el tr5 hide-mobile" data-0="right: 22vw; top: 64vh;" data-200="top: 30vh;">
 						<img src="assets/img/triangles/triangle-5.png" alt="shape">
 					</span>
 					
-					<span class="parallax-el tr6" data-0="left: 7vw; top: 40vh;" data-250="top: 10vh;">
+					<span class="parallax-el tr6 hide-mobile" data-0="left: 7vw; top: 40vh;" data-250="top: 10vh;">
 						<img src="assets/img/triangles/triangle-6.png" alt="shape">
 					</span> 
 
@@ -88,7 +91,7 @@
 						<img src="assets/img/triangles/triangle-9.png" alt="shape">
 					</span> 
 
-					<span class="parallax-el tr10" data-0="left: 41vw; top: 39vh;" data-150="top: 10vh">
+					<span class="parallax-el tr10 hide-mobile" data-0="left: 41vw; top: 39vh;" data-150="top: 10vh">
 						<img src="assets/img/triangles/triangle-10.png" alt="shape">
 					</span>
 
@@ -96,7 +99,7 @@
 						<img src="assets/img/triangles/triangle-11.png" alt="shape">
 					</span>
 
-					<span class="parallax-el tr12 zi2" data-0="left: 18vw; top: 10vh;" data-100="top: -10vh;">
+					<span class="parallax-el tr12 zi2 hide-mobile" data-0="left: 18vw; top: 10vh;" data-100="top: -10vh;">
 						<img src="assets/img/triangles/triangle-12.png" alt="shape">
 					</span> 
 
@@ -286,7 +289,7 @@
 				<!-- ... -->
 
 				<!-- Contacto -->
-				<section class="dk-bg grey-bg section" id="contact">
+				<section class="dk-bg grey-bg section contact" id="contact">
 					<div class="section-wrapper">
 						<div class="info-section contact">
 							<h2 data-aos="fade-up">Escribinos!</h2>
@@ -300,18 +303,20 @@
 									</p>
 								</div>
 								<div class="col-right" data-aos="fade-up">
-									<form action="assets/enviar_formulario.php" method="post" enctype="multipart/form-data">
+
+									<form action="assets/enviar_formulario.php" method="post" enctype="multipart/form-data" id="contacto-form">
+										<div class="row alert"></div>
 										<div class="row">
-											<input type="text" name="nombreapellido" placeholder="Nombre y apellido" required>
+											<input type="text" name="nombreapellido" id="nombreapellido" placeholder="Nombre y apellido" required>
 										</div>
 										<div class="row">
-											<input type="text" name="email" placeholder="Email" required>
+											<input type="email" name="email" id="email" placeholder="Email" required>
 										</div>
 										<div class="row">
-											<textarea rows="10" cols="10" placeholder="Mensaje" required></textarea>
+											<textarea rows="10" cols="10" id="mensaje" name="mensaje" placeholder="Mensaje" required></textarea>
 										</div>
 										<div class="row">
-											<input type="submit" value="enviar">
+											<input type="submit" value="enviar" id="submit">
 										</div>
 									</form>
 								</div>
@@ -335,5 +340,39 @@
 		<script src="assets/js/slick.js"></script>
 		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 		<script src="assets/js/main.js"></script>
+
+		<script>
+			/* FORM */
+			$("#contacto-form").submit(function(event) {
+			    event.preventDefault(); 
+
+			    var proceed = true;
+			    var form = this;
+
+			    if (proceed) { 
+			        var post_url = $(this).attr("action"); 
+			        var request_method = $(this).attr("method"); 
+			        var form_data = $(this).serialize(); 
+
+			        var output = '';
+
+			        $.ajax({
+			            url: post_url,
+			            type: request_method,
+			            dataType: 'json',
+			            data: form_data
+			        }).done(function(response) {
+			            if (response.type == 'error') { 
+			                output = '<div class="error">' + response.text + '</div>';
+			            	$("#contact-form .alert").append(output);
+			            } else {
+			                $(form)[0].reset(); 
+			                output = '<div class="success">' + response.text + '</div>';
+			            	$("#contacto-form .alert").append(output);
+			            }
+			        });
+			    }
+			});
+		</script>
 	</body>
 </html>
