@@ -125,13 +125,3 @@ function changeMenuColor() {
     }
 }
 
-var wrap = $("#stopscroll");    
-  wrap.on("scroll", function(e) {  
-    if (this.scrollTop > 100) {
-       wrap.addClass("stopscroll");
-       console.log("HALA");
-    } else {
-       wrap.removeClass("stopscroll");
-       console.log("CHAU");
-    }
-});  
