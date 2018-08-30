@@ -304,17 +304,22 @@
 								</div>
 								<div class="col-right" data-aos="fade-up">
 
-									<form action="assets/enviar_formulario.php" method="post" enctype="multipart/form-data" id="contacto-form">
-										<div class="row alert"></div>
-										<div class="row">
-											<input type="text" name="nombreapellido" id="nombreapellido" placeholder="Nombre y apellido" required>
+									<form id="ajax-contact-form" method="POST" action="assets/enviar_formulario.php">
+										
+										<div id="form-messages"></div>
+
+										<div class="row nombre-group">
+											<input type="text" name="nombre" id="nombre" placeholder="Nombre y apellido">
 										</div>
-										<div class="row">
-											<input type="email" name="email" id="email" placeholder="Email" required>
+
+										<div class="row email-group">
+											<input type="email" name="email" id="email" placeholder="Email">
 										</div>
-										<div class="row">
-											<textarea rows="10" cols="10" id="mensaje" name="mensaje" placeholder="Mensaje" required></textarea>
+
+										<div class="row mensaje-group">
+											<textarea rows="10" cols="10" id="mensaje" name="mensaje" placeholder="Mensaje"></textarea>
 										</div>
+
 										<div class="row">
 											<input type="submit" value="enviar" id="submit">
 										</div>
@@ -342,37 +347,41 @@
 		<script src="assets/js/main.js"></script>
 
 		<script>
-			/* FORM */
-			$("#contacto-form").submit(function(event) {
-			    event.preventDefault(); 
-
-			    var proceed = true;
-			    var form = this;
-
-			    if (proceed) { 
-			        var post_url = $(this).attr("action"); 
-			        var request_method = $(this).attr("method"); 
-			        var form_data = $(this).serialize(); 
-
-			        var output = '';
-
-			        $.ajax({
-			            url: post_url,
-			            type: request_method,
-			            dataType: 'json',
+			(function($) {
+			    // Select the form and form message
+			    var form = $('#ajax-contact-form'),
+			        form_messages = $('#form-messages');
+			         
+			    // Action at on submit event
+			    $(form).on('submit', function(e) {
+			        e.preventDefault(); // Stop browser loading
+			         
+			        // Get form data
+			        var form_data = $(form).serialize();
+			         
+			        // Send Ajax Request
+			        var the_request = $.ajax({
+			            type: 'POST', // Request Type POST, GET, etc.
+			            url: "assets/enviar_formulario.php",
 			            data: form_data
-			        }).done(function(response) {
-			            if (response.type == 'error') { 
-			                output = '<div class="error">' + response.text + '</div>';
-			            	$("#contact-form .alert").append(output);
-			            } else {
-			                $(form)[0].reset(); 
-			                output = '<div class="success">' + response.text + '</div>';
-			            	$("#contacto-form .alert").append(output);
-			            }
 			        });
-			    }
-			});
+			         
+			        // At success
+			        the_request.done(function(data){
+			            form_messages.text(data);
+			            form_messages.addClass('success');
+			            // Do other things at success
+			        });
+			         
+			        // At error
+			        the_request.done(function(){
+			            form_messages.text(data);
+			            form_messages.addClass('error');
+			             
+			            // Do other things at fails
+			        });
+			    });
+			})(jQuery);
 		</script>
 	</body>
 </html>

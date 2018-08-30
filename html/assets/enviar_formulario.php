@@ -1,6 +1,6 @@
 <?php
-	$emailPara	= 'hola@brontosaurio.com.ar'; 
-	$subject	= 'Contacto brontosario.com.ar';
+	/*$emailPara	= 'hola@brontosaurio.com.ar'; 
+	$subject	= 'Contacto brontosaurio.com.ar';
 
 	$enviado	="../index.html";
 	$mensaje 	= '';
@@ -40,61 +40,52 @@
 	} else {
 	    $output = json_encode(array('type'=>'message', 'text' => 'Gracias por tu mensaje ¡Te responderemos a la brevedad!'));
 	    die($output);
+	}*/
+
+	// Proccess at only POST metheod
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	    // name of sender
+	    $name = strip_tags(trim($_POST["nombre"]));
+	     
+	    // Email of sender
+	    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+	     
+	    // Sender subject
+	    $subject = strip_tags(trim($_POST["mensaje"]));
+	     
+	    // Your email where this email will be sent
+	    $your_email = "hola@brontosaurio.com.ar";
+	    //Your site name for identify 
+	    $your_site_name = "Brontosaurio.com.ar: ";
+	     
+	    // Build email subject
+	    $email_subject = "[{$your_site_name}] Nuevo mensaje de: {$name}";
+	     
+	    // Build Email Content
+	    $email_content = "Nombre: {$name}\n";
+	    $email_content .= "Email: {$email}\n";
+	    $email_content .= "Comentario: {$subject}\n";
+	     
+	    // Build email headers
+	    $email_headers = "De: {$name} <{$email}>";
+	     
+	    // Send email
+	    $send_email = mail($your_email, $email_subject, $email_content, $email_headers);
+	     
+	    // Check email sent or not
+	    if($send_email){
+	        // Send a 200 response code.
+	        http_response_code(200);
+	        echo "Gracias " . $name . '! Tu mensaje ha sido enviado. Te responderemos a la brevedad.'; 
+	    } else {
+	        // Send a 500 response code.
+	        http_response_code(500);
+	        echo "Uy! No pudimos enviar tu mensaje. Por favor intenta en un ratito.";
+	    }
+	} else {
+	    // Send 403 response code
+	    http_response_code(403);
+	    echo "Uy! No pudimos enviar tu mensaje. Por favor intenta en un ratito. :(";
 	}
 
-	/*if($_POST) {
-	    $to_email       = "hola@brontosario.com.ar"; //Recipient email, Replace with own email here
-	    $emailPara     = "hola@brontosario.com.ar"; //from mail, it is mandatory with some hosts and without it mail might endup in spam.
-	    
-	    //check if its an ajax request, exit if not
-	    if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-	        
-	        $output = json_encode(array( //create JSON data
-	            'type'=>'error', 
-	            'text' => 'Sorry Request must be Ajax POST'
-	        ));
-	        die($output); //exit script outputting json data
-	    } 
-	    
-	    //Sanitize input data using PHP filter_var().
-	    $nombreapellido = filter_var($_POST["nombreapellido"], FILTER_SANITIZE_STRING);
-	    $email     		= filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-	    $message        = filter_var($_POST["mensaje"], FILTER_SANITIZE_STRING);
-	    $subject        = 'Contacto de brontosario.com.ar de ' . $nombreapellido;
-	    
-	    //additional php validation
-	    if(strlen($nombreapellido) < 3){ // If length is less than 4 it will output JSON error.
-	        $output = json_encode(array('type'=>'error', 'text' => 'Por favor completa un nombre válido'));
-	        die($output);
-	    }
-
-	    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){ //email validation
-	        $output = json_encode(array('type'=>'error', 'text' => 'Por favor ingresa un email válido'));
-	        die($output);
-	    }
-
-	    if(strlen($message) < 3){ //check emtpy message
-	        $output = json_encode(array('type'=>'error', 'text' => 'El mensaje es muy corto :('));
-	        die($output);
-	    }
-	    
-	    //email body
-	    $message_body = $message."\r\n\r\n-".$nombreapellido."\r\nEmail : ".$email;
-	    
-	    //proceed with PHP email.
-	    $headers = 'From: '. $emailPara .'' . "\r\n" .
-	    'Reply-To: '.$email.'' . "\r\n" .
-	    'X-Mailer: PHP/' . phpversion();
-	    
-	    $send_mail = mail($to_email, $subject, $message_body, $headers);
-	    
-	    if(!$send_mail) {
-	        //If mail couldn't be sent output error. Check your PHP email configuration (if it ever happens)
-	        $output = json_encode(array('type'=>'error', 'text' => 'No se pudo enviar el mensaje'));
-	        die($output);
-	    } else {
-	        $output = json_encode(array('type'=>'message', 'text' => 'Gracias ' . $nombreapellido .'. ¡Te responderemos a la brevedad!'));
-	        die($output);
-	    }
-	}*/
 ?>
