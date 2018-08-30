@@ -55,11 +55,12 @@
 	     
 	    // Your email where this email will be sent
 	    $your_email = "hola@brontosaurio.com.ar";
+
 	    //Your site name for identify 
 	    $your_site_name = "Brontosaurio.com.ar: ";
 	     
 	    // Build email subject
-	    $email_subject = "[{$your_site_name}] Nuevo mensaje de: {$name}";
+	    $email_subject = $your_site_name . "Nuevo mensaje de: " . $name;
 	     
 	    // Build Email Content
 	    $email_content = "Nombre: {$name}\n";
