@@ -4,6 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Brontosaurio</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+
 		<link rel="stylesheet" href="assets/css/fontawesome-all.css">
 		<link rel="stylesheet" href="assets/css/gobold.css">
 		<link rel="stylesheet" href="assets/css/portfolio.css">
@@ -358,27 +362,23 @@
 			        e.preventDefault(); // Stop browser loading
 			         
 			        // Get form data
-			        var form_data = $(form).serialize();
+			        var name  	= $('#nombre').val();
+			        var email 	= $('#email').val();
+			        var mensaje = $('#mensaje').val();
 			         
 			        // Send Ajax Request
-			        var the_request = $.ajax({
+			        $.ajax({
 			            type: 'POST', // Request Type POST, GET, etc.
 			            url: "assets/enviar_formulario.php",
-			            data: form_data
-			        });
-			         
-			        // At success
-			        the_request.done(function(data){
+			            data: name + email + mensaje
+			        }).done(function(data){
 			            form_messages.text(data);
 			            form_messages.addClass('success');
 			            // Do other things at success
-			        });
-			         
-			        // At error
-			        the_request.done(function(){
+
+			        }).done(function(){
 			            form_messages.text(data);
 			            form_messages.addClass('error');
-			             
 			            // Do other things at fails
 			        });
 			    });

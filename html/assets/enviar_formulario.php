@@ -45,13 +45,13 @@
 	// Proccess at only POST metheod
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    // name of sender
-	    $name = strip_tags(trim($_POST["nombre"]));
+	    $name = $_POST["nombre"];
 	     
 	    // Email of sender
-	    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+	    $email = $_POST["email"];
 	     
 	    // Sender subject
-	    $subject = strip_tags(trim($_POST["mensaje"]));
+	    $subject = $_POST["mensaje"];
 	     
 	    // Your email where this email will be sent
 	    $your_email = "hola@brontosaurio.com.ar";
@@ -77,6 +77,7 @@
 	        // Send a 200 response code.
 	        http_response_code(200);
 	        echo "Gracias " . $name . '! Tu mensaje ha sido enviado. Te responderemos a la brevedad.'; 
+	        echo $send_email;
 	    } else {
 	        // Send a 500 response code.
 	        http_response_code(500);
