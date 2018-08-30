@@ -482,6 +482,11 @@ footer img {
 	}
 }
 
+.stopscroll{
+    position: fixed;
+        top: 10px;
+}
+
 @media screen and (max-width: 767px) {
 	.hide-mobile {
 		display: none;
@@ -552,6 +557,7 @@ footer img {
 	    padding: 0;
 	    width: 100%;
 	}
+
 
 }
 
