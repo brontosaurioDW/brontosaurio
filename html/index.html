@@ -351,40 +351,27 @@
 		<script src="assets/js/parallax.js"></script>
 		<script src="assets/js/slick.js"></script>
 		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script src="assets/js/animacion_poli.js"></script>
 		<script src="assets/js/main.js"></script>
 
 		<script>
-			(function($) {
-			    // Select the form and form message
-			    var form = $('#ajax-contact-form'),
-			        form_messages = $('#form-messages');
-			         
-			    // Action at on submit event
-			    $(form).on('submit', function(e) {
-			        e.preventDefault(); // Stop browser loading
-			         
-			        // Get form data
-			        var name  	= $('#nombre').val();
-			        var email 	= $('#email').val();
-			        var mensaje = $('#mensaje').val();
-			         
-			        // Send Ajax Request
-			        $.ajax({
-			            type: 'POST', // Request Type POST, GET, etc.
-			            url: "assets/enviar_formulario.php",
-			            data: name + email + mensaje
-			        }).done(function(data){
-			            form_messages.text(data);
-			            form_messages.addClass('success');
-			            // Do other things at success
+			$(document).ready(function(){
+				$('#ajax-contact-form').on('submit', function(event){
+					event.preventDefault();
 
-			        }).done(function(){
-			            form_messages.text(data);
-			            form_messages.addClass('error');
-			            // Do other things at fails
-			        });
-			    });
-			})(jQuery);
+					$.ajax({
+						type: 'POST',
+						url: $(this).attr('action'),
+						data: $(this).serialize(),
+						success: function(data){
+							console.log(data);
+						},
+						error: function(data){
+							console.log(data);
+						}
+					}
+				})
+			});
 		</script>
 	</body>
 </html>
