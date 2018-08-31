@@ -309,16 +309,16 @@
 								</div>
 								<div class="col-right" data-aos="fade-up">
 
-									<form id="ajax-contact-form" method="POST" action="assets/enviar_formulario.php">
+									<form id="c_form" method="POST" action="assets/enviar_formulario.php">
 										
-										<div id="form-messages"></div>
+										<div class="contact__msg"></div>
 
 										<div class="row nombre-group">
-											<input type="text" name="nombre" id="nombre" placeholder="Nombre y apellido">
+											<input type="text" name="nombre" id="nombre" placeholder="Nombre">
 										</div>
 
 										<div class="row email-group">
-											<input type="email" name="email" id="email" placeholder="Email">
+											<input type="text" name="email" id="email" placeholder="Email">
 										</div>
 
 										<div class="row mensaje-group">
@@ -353,23 +353,69 @@
 		<script src="assets/js/main.js"></script>
 
 		<script>
-			$(document).ready(function(){
-				$('#ajax-contact-form').on('submit', function(event){
-					event.preventDefault();
+			(function ($) {
+			    'use strict';
 
-					$.ajax({
-						type: 'POST',
-						url: $(this).attr('action'),
-						data: $(this).serialize(),
-						success: function(data){
-							console.log(data);
-						},
-						error: function(data){
-							console.log(data);
-						}
-					}
-				})
-			});
+			    var form = $('#c_form'),
+			        message = $('.contact__msg'),
+			        form_data;
+
+			    form.submit(function (e) {
+			        e.preventDefault();
+
+    	        	var email_reg = /^([A-Za-z0-9_\-.+])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,})$/;
+            	    var emailinput = $('#email').val();
+
+			        if (
+			        	$('#nombre').val() == '' || 
+			        	$('#email').val() == '' || 
+			        	$('#mensaje').val() == '') {
+
+				        message.addClass('error');
+			        	var messageContent = 'Por favor, completa el: ';
+
+			        	if ($('#nombre').val() == '') {
+				        	messageContent += 'nombre, ';
+			        	} 
+
+			        	if ($('#email').val() == '') {
+				        	messageContent += 'email, ';
+			        	} 
+
+			        	if ($('#mensaje').val() == '') {
+				        	messageContent +=  'mensaje.';
+			        	} 
+
+			        	message.text(messageContent);
+			        } else if ( emailinput != '' && email_reg.test(emailinput) == false) {
+	        	    	message.addClass('error');
+	        	        messageContent = 'Por favor, ingresa un email válido.';
+	        	    	message.text(messageContent);
+			        } else {	        	
+			        	form_data = $(this).serialize();
+			        	$.ajax({
+			        	    type: 'POST',
+			        	    url: form.attr('action'),
+			        	    data: form_data
+			        	})
+			        	.done(done_func)
+			        	.fail(fail_func);
+			        }
+			    });
+
+			    // Success function
+			    function done_func(data) {
+			        message.fadeIn().removeClass('error').addClass('success');
+			        message.text(data);
+			        form.find('input:not([type="submit"]), textarea').val('');
+			    }
+
+			    // fail function
+			    function fail_func(data) {
+			        message.fadeIn().removeClass('success').addClass('error');
+			        message.text(data);
+			    }
+			})(jQuery);
 		</script>
 	</body>
 </html>
