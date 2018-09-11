@@ -8,49 +8,52 @@
 		<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
 		<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/fontawesome-all.css">
 		<link rel="stylesheet" href="assets/css/gobold.css">
 		<link rel="stylesheet" href="assets/css/portfolio.css">
 		<link rel="stylesheet" href="assets/css/slick.css">
 		<link rel="stylesheet" href="assets/css/parallax.css">
-		<!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
+		<div class="se-pre-con"></div>
 
-		<div class="viewport">
+		<!-- Header -->
+	    <header class="header">
+			<h1 class="logo-mini">
+				<a href="#parallax" class="d-block d-lg-none">Brontosaurio</a>
+			</h1>
+
+			<div id="hamburger-icon" class="menu-mobile" href="#" title="Menu">
+				<span class="line line-1"></span>
+				<span class="line line-2"></span>
+				<span class="line line-3"></span>
+			</div>
+
+			<nav id="nav" class="main-menu">
+				<ul class="menu" id="menu">
+					<li class="logo-mini">
+						<a href="#parallax" class="d-none d-lg-block">Brontosaurio</a>
+					</li>
+					<li>
+						<a href="#portfolio">Trabajos</a>
+					</li><li>
+						<a href="#services">Servicios</a>
+					</li><!-- <li>
+						<a href="#about">Sobre nosotros</a>
+					</li> --><li>
+						<a href="#contact">Contacto</a>
+					</li>
+				</ul>
+			</nav>
+		</header>  
+		<!-- ... -->
 		
-			<!-- Header -->
-		    <header class="header">
-				<h1>
-					<a href="#parallax">Brontosaurio</a>
-				</h1>
-
-				<div id="hamburger-icon" class="menu-mobile" href="#" title="Menu">
-					<span class="line line-1"></span>
-					<span class="line line-2"></span>
-					<span class="line line-3"></span>
-				</div>
-
-				<nav id="nav">
-					<ul class="menu" id="menu">
-						<li>
-							<a href="#portfolio">Trabajos</a>
-						</li><li>
-							<a href="#services">Servicios</a>
-						</li><li>
-							<a href="#about">Sobre nosotros</a>
-						</li><li>
-							<a href="#contact">Contacto</a>
-						</li>
-					</ul>
-				</nav>
-			</header>  
-			<!-- ... -->
-			
-			<main id="skrollr-body">
+		<div class="wrapper">
+			<main>
 				<!-- Welcome -->
-				<section class="lg-bg section" id="parallax">
+				<section class="section lg-bg" id="parallax">
 					<div class="section-wrapper parallax-wrapper">
 						<div class="logo" 
 							 data-0="zoom:0.8;" 
@@ -68,7 +71,7 @@
 						<img src="assets/img/triangles/triangle-2.png" alt="shape">
 					</span>
 
-					<span class="parallax-el tr3 zi2 hide-mobile" data-0="right: -20vw; top: -30vh;" data-150="top: -70vh;">
+					<span class="parallax-el tr3 zi2 hide-mobile" data-0="right: -11vw; bottom: -60vh;" data-150="bottom: -35vh;">
 						<img src="assets/img/triangles/triangle-3.png" alt="shape">
 					</span> 
 
@@ -76,7 +79,7 @@
 						<img src="assets/img/triangles/triangle-4.png" alt="shape">
 					</span>
 
-					<span class="parallax-el tr5 hide-mobile" data-0="right: 22vw; top: 64vh;" data-200="top: 30vh;">
+					<span class="parallax-el tr5 hide-mobile" data-0="right: 22vw; top: 74vh;" data-400="top: 30vh;">
 						<img src="assets/img/triangles/triangle-5.png" alt="shape">
 					</span>
 					
@@ -88,7 +91,7 @@
 						<img src="assets/img/triangles/triangle-7.png" alt="shape">
 					</span>
 
-					<span class="parallax-el tr8" data-0="right:5%; top:65%;" data-150="top:35%;">
+					<span class="parallax-el tr8" data-0="right: 11vw; top: 49vh;" data-150="top:30vh;">
 						<img src="assets/img/triangles/triangle-8.png" alt="shape">
 					</span>
 
@@ -148,19 +151,18 @@
 						<img src="assets/img/triangles/triangle-3.png" alt="shape">
 					</span>  
 
-					<span class="parallax-el tr23 zi2" data-0="right:5vw; bottom:1vh;" data-400="bottom: 11vh;">
+					<span class="parallax-el tr23 zi2" data-0="right:9vw; top:16vh;" data-200="top: 3vh;">
 						<img src="assets/img/triangles/triangle-7.png" alt="shape">
 					</span>
 
-					<span class="parallax-el tr15" data-0="right: 15vw; bottom: -35vh;" data-300="bottom: 35vh;">
+					<span class="parallax-el tr15" data-0="right: 19vw; bottom: 50vh;" data-300="bottom: 70vh;">
 						<img src="assets/img/triangles/triangle-15.png" alt="shape">
 					</span>
 				</section>
-				<!-- ... -->
 
 				<!-- Trabajos -->
-				<section class="portfolio dk-bg violet-bg section d-height" id="portfolio">
-					<div class="slider" data-aos="fade-up">
+				<section class="section portfolio dk-bg violet-bg d-height" id="portfolio">
+					<div class="slider">
 						<div class="slide-item">
 							<div class="content__item" id="content-1">
 								<img class="content__item-img rounded-right" src="assets/img/detalle-ym.jpg" alt="YourMom" />
@@ -207,7 +209,7 @@
 						</div>							
 					</div>			
 
-					<ul class="arrows" data-aos="fade-up">
+					<ul class="arrows">
 				        <li class="prev">
 				        	<i class="fal fa-angle-left"></i>
 				        </li>
@@ -219,59 +221,114 @@
 				<!-- ... -->
 
 				<!-- Servicios -->
-				<section class="lg-bg section" id="services">
+				<section class="section lg-bg" id="services">
 					<div class="section-wrapper">
-						<div class="info-section services">
-							<h2 data-aos="fade-up">Servicios</h2>
+						<div class="d-none d-lg-block">
+							<span class="parallax-el" style="left: 5vw; top: 50vh;">
+								<img src="assets/img/triangles/triangle-1.png" alt="shape">
+							</span>
 
-							<ul>
-								<li data-aos="fade-up">
+							<span class="parallax-el" style="left: 0; top: 35vh;">
+								<img src="assets/img/triangles/triangle-4.png" alt="shape">
+							</span>
+
+							<span class="parallax-el" style="left: 12vw; top: 33vh;">
+								<img src="assets/img/triangles/triangle-5.png" alt="shape">
+							</span>
+							
+							<span class="parallax-el" style="left: 0vw; top: 7vh;">
+								<img src="assets/img/triangles/triangle-6.png" alt="shape">
+							</span> 
+
+							<span class="parallax-el" style="left: 22vw; top: 98vh;">
+								<img src="assets/img/triangles/triangle-7.png" alt="shape">
+							</span>		
+
+							<span class="parallax-el" style="left: 1vw; top: 68vh;">
+								<img src="assets/img/triangles/triangle-10.png" alt="shape">
+							</span>
+
+							<span class="parallax-el" style="left: -4vw; top: 90vh;">
+								<img src="assets/img/triangles/triangle-11.png" alt="shape">
+							</span>
+
+							<span class="parallax-el" style="left: 9vw; top: 55vh;">
+								<img src="assets/img/triangles/triangle-12.png" alt="shape">
+							</span> 
+
+							<span class="parallax-el" style="left: 14vw; top: 82vh;">
+								<img src="assets/img/triangles/triangle-13.png" alt="shape">
+							</span>					
+						</div>
+
+						<div class="info-section service-section services">
+							<h2>Servicios</h2>
+
+							<ul class="row">
+								<li class="col-md-6">
 									<i class="fal fa-browser"></i>
 									<p>
 										Buscamos hacer el sitio perfecto para cada cliente teniendo en cuenta sus necesidades, identidad y al público al que apuntan. 
 									</p>
 								</li>
 
-								<li data-aos="fade-up">
+								<li class="col-md-6">
 									<i class="fab fa-wordpress-simple"></i>
 									<p>
 										También hacemos Wordpress! Ya sea con temas predeterminados o armándolo de cero para que puedas administrar tu sitio de la manera más simple.
 									</p>
 								</li>
 
-								<li data-aos="fade-up">
+								<li class="col-md-6">
 									<i class="fal fa-pen"></i>
 									<p>
 										Creamos diseños pregnantes que se adapten a tu identidad para que tu sitio tenga el impacto que necesitás.
 									</p>
 								</li>
 
-								<li data-aos="fade-up">
+								<li class="col-md-6">
 									<i class="fal fa-shopping-cart"></i>
 									<p>
 										Querés vender tus productos en internet? Te armamos la store que necesitás para empezar a vender online!
 									</p>
 								</li>
 							</ul>
+
+							<!-- <ul class="dinos justify-content-end">
+								<li>
+									<img src="assets/img/dino-violeta.png" alt="Brontosaurio">
+								</li>
+								<li>
+									<img src="assets/img/dino-verde.png" alt="Brontosaurio">
+								</li>
+								<li>
+									<img src="assets/img/dino-violeta.png" alt="Brontosaurio">
+								</li>
+								<li>
+									<img src="assets/img/dino-verde.png" alt="Brontosaurio">
+								</li>
+								<li>
+									<img src="assets/img/dino-violeta.png" alt="Brontosaurio">
+								</li>
+							</ul> -->
 						</div>
 					</div>
 				</section>
-
 				<!-- ... -->
 
 				<!-- About -->
-				<section class="lg-bg section" id="about">
+				<!-- <section class="section lg-bg" id="about">
 					<div class="section-wrapper">
 						<div class="info-section about">
-							<h2 data-aos="fade-up">Sobre nosotros</h2>
+							<h2>Sobre nosotros</h2>
 							
-							<p data-aos="fade-up">Brontosaurio surge de 5 amigos fanáticos de la tecnología y el diseño. Nos apasiona lo que hacemos y ponemos amor y dedicación en cada proyecto. No nos da miedo probar cosas nuevas y buscamos reinventarnos constantemente.</p>
+							<p>Brontosaurio surge de 5 amigos fanáticos de la tecnología y el diseño. Nos apasiona lo que hacemos y ponemos amor y dedicación en cada proyecto. No nos da miedo probar cosas nuevas y buscamos reinventarnos constantemente.</p>
 
-							<p data-aos="fade-up">En Brontosaurio buscamos aprender nuevas tecnologías y mantenernos al día con las vanguardias de diseño. En esto encontramos el espacio para explorar y hacer lo que nos gusta, por eso cada uno de nuestros proyectos es súper importante y buscamos elevarlo lo más posible.</p>
+							<p>En Brontosaurio buscamos aprender nuevas tecnologías y mantenernos al día con las vanguardias de diseño. En esto encontramos el espacio para explorar y hacer lo que nos gusta, por eso cada uno de nuestros proyectos es súper importante y buscamos elevarlo lo más posible.</p>
 
-							<p data-aos="fade-up">En nuestro tiempo libre jugamos muchos juegos de mesa, miramos pelis, sacamos fotos, salimos a tomar cerveza, le damos amor a nuestras mascotas y vamos a bailar (ok, eso último no...)</p>
+							<p>En nuestro tiempo libre jugamos muchos juegos de mesa, miramos pelis, sacamos fotos, salimos a tomar cerveza, le damos amor a nuestras mascotas y vamos a bailar (ok, eso último no...)</p>
 
-							<ul data-aos="fade-up">
+							<ul>
 								<li>
 									<img src="assets/img/dino-violeta.png" alt="Brontosaurio">
 								</li>
@@ -290,42 +347,42 @@
 							</ul>
 						</div>
 					</div>
-				</section>
+				</section> -->
 				<!-- ... -->
 
 				<!-- Contacto -->
-				<section class="dk-bg grey-bg section contact" id="contact">
+				<section class="section dk-bg grey-bg contact" id="contact">
 					<div class="section-wrapper">
 						<div class="info-section contact">
-							<h2 data-aos="fade-up">Escribinos!</h2>
+
+							<h2>Escribinos!</h2>
 							<div class="form-wrapper">
-								<div class="col-left" data-aos="fade-up">
+								<div class="col-left">
 									<p>
 										Este formulario no es como esos que nunca llegan, escribinos contándonos de tu proyecto y te contactamos lo antes posible.							
 									</p>
 									<p>
 										También podés mandarnos un mail a <span class="bold">hola@brontosaurio.com.ar</span>
 									</p>
+
+									<div class="contact__msg"></div>
 								</div>
-								<div class="col-right" data-aos="fade-up">
+								<div class="col-right">
 
 									<form id="c_form" method="POST" action="assets/enviar_formulario.php">
-										
-										<div class="contact__msg"></div>
-
-										<div class="row nombre-group">
+										<div class="row-form nombre-group">
 											<input type="text" name="nombre" id="nombre" placeholder="Nombre">
 										</div>
 
-										<div class="row email-group">
+										<div class="row-form email-group">
 											<input type="text" name="email" id="email" placeholder="Email">
 										</div>
 
-										<div class="row mensaje-group">
+										<div class="row-form mensaje-group">
 											<textarea rows="10" cols="10" id="mensaje" name="mensaje" placeholder="Mensaje"></textarea>
 										</div>
 
-										<div class="row">
+										<div class="row-form">
 											<input type="submit" value="enviar" id="submit">
 										</div>
 									</form>
@@ -336,20 +393,22 @@
 				</section>
 				<!-- ... -->
 			</main>
-			
-			<!-- Footer -->
-			<!-- <footer>
-				<p>Brontosaurio 2018 - Todos los derechos reservados</p>
+		</div>					
+		
+		<!-- Footer -->
+		<footer>
+			<p>Brontosaurio 2018 - Todos los derechos reservados</p>
+			<div>
+				<!-- <img src="assets/img/corazon.png" alt="Made with Love"> -->
 				<img src="assets/img/dino-verde.png" alt="Brontosaurio">
-			</footer> -->
-			<!-- ... -->
-		</div>
+			</div>
+		</footer> 
+		<!-- ... -->
 
 		<script src="assets/js/jquery.js"></script>
 		<script src="assets/js/parallax.js"></script>
 		<script src="assets/js/slick.js"></script>
-		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-		<script src="assets/js/animacion_poli.js"></script>
+		<!-- <script src="assets/js/animacion_poli.js"></script> -->
 		<script src="assets/js/main.js"></script>
 
 		<script>

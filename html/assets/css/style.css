@@ -12,6 +12,19 @@ body {
 	font-size: 16px;
 }
 
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../img/loader.gif') center no-repeat #fff;
+}
+
+
 /*  GENERAL  */
 
 section {
@@ -19,7 +32,7 @@ section {
     overflow: hidden;
     min-height: 100vh;
     width: 100%;
-    padding: 3vh 2vw 3vh 4vw;
+    padding: 4vh 4vw 4vh 2vw;
 }
 
 .section-wrapper {
@@ -40,20 +53,12 @@ section {
 
 .violet-bg {
 	outline: none;
-	background: #6c257b;
-	background: -moz-linear-gradient(top, #6c257b 0%, #4b0958 100%);
-	background: -webkit-linear-gradient(top, #6c257b 0%,#4b0958 100%);
-	background: linear-gradient(to bottom, #6c257b 0%,#4b0958 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6c257b', endColorstr='#4b0958',GradientType=0 );	
+	background: #561563;
 }
 
 .grey-bg {
 	outline: none;
-	background: #2f2f2f;
-	background: -moz-linear-gradient(top, #2f2f2f 0%, #171717 100%);
-	background: -webkit-linear-gradient(top, #2f2f2f 0%,#171717 100%);
-	background: linear-gradient(to bottom, #2f2f2f 0%,#171717 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f2f2f', endColorstr='#171717',GradientType=0 );
+	background: #212121;
 }
 
 .lg-bg {
@@ -86,16 +91,13 @@ header {
 	margin-top: 0;
 }
 
-header h1 {
-	display: inline-block;
-	vertical-align: bottom;
-	margin-right: 5px;
-	position: fixed;
-	bottom: 4.5vh;
-	left: 1.5vw;
+header .logo-mini {
+	padding-right: 15px;
+    margin-right: 5px;
+    border-right: 1px solid rgba(0, 0, 0, 0.35);
 }
 
-header h1 a {
+header .logo-mini.logo-mini a {
     display: block;
     font-size: 0;
     color: transparent;
@@ -103,26 +105,29 @@ header h1 a {
     height: 32px;
     background: url(../img/dino-verde.png) no-repeat 0 0 transparent;
     background-size: 100%;
+    -webkit-transform: translate(25%,0%) rotate(-90deg);
+    transform: translate(25%,0%) rotate(-90deg);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
 }
 
 header nav {
-	position: relative;
-	top: -3px;
-	display: inline-block;
-	-webkit-transform: rotate(-90deg) translateZ(0);
-	transform: rotate(-90deg) translateZ(0);
-	-webkit-transform-origin: left top 0;
-	transform-origin: left top 0;
-	float: left;
-	white-space: nowrap;
+	position: fixed;
+	top: 27%;
+	right: 2.5em;
+	-webkit-transform: translate(50%,-50%) rotate(90deg);
+	transform: translate(50%,-50%) rotate(90deg);
+	-webkit-transform-origin: center center;
+	transform-origin: center center;
+	z-index: 50;
+	margin: 0;
 }
 
 header li {
 	list-style: none;
-	margin-left: 15px;
-	border-left: 1px solid #333;
-	padding-left: 15px;
+	margin: 0 5px;
 	display: inline-block;
+	vertical-align: bottom;
 	-webkit-transition: .3s;
 	transition: .3s;
 }
@@ -140,19 +145,26 @@ header li:after {
 }
 
 header .active a {
-	color: #ffffff;
-	padding: 0 10px;
+	color: #ffffff!important;
 	background: #32bcbb;
 	display: block;
 }
 
-header a {
+header a,
+header a:active,
+header a:hover,
+header a:visited,
+header a:focus {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
 	text-transform: uppercase;
 	-webkit-transition: .3s;
 	transition: .3s;
+	text-decoration: none;
+	display: block;
+	line-height: 35px;
+	padding: 0 10px;
 }
 
 header .lg-menu li {
@@ -184,8 +196,11 @@ header .lg-menu li a {
 /* Services & About */
 
 .info-section {
-	padding: 1vh 9vw;
-	width: 90vw;
+	padding: 4vh 11vw;
+}
+
+.info-section.service-section {
+	padding: 4vh 10vw 4vh 25vw;
 }
 
 .info-section h2 {
@@ -194,6 +209,7 @@ header .lg-menu li a {
 	text-transform: uppercase;
 	font-weight: normal;
 	letter-spacing: 3px;
+	margin-bottom: 35px;
 }
 
 .info-section li {
@@ -201,44 +217,25 @@ header .lg-menu li a {
 }
 
 .info-section p {
-	font-size: 17px;
-	line-height: 160%;
-}
-
-.services ul {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
+	font-size: 15px;
+	line-height: 180%;
 }
 
 .services li {
-	list-style: none;
-	width: 47%;
+	margin: 30px 0 0;
 
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	-ms-grid-row-align: center;
-	align-items: center;
-
-	margin: 40px 0 0;
 }
 
 .services p {
-    width: 90%;
-    margin-left: 10%;
+	margin-left: 30px;
+	padding-right: 25px;
 }
 
 .services i {
-	font-size: 50px;
+	font-size: 40px;
 	color: #a77bb6;
 }
 
@@ -246,15 +243,15 @@ header .lg-menu li a {
 	margin-top: 30px;
 }
 
-.about ul {
+.dinos {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 
-	margin-top: 45px;
+	margin-top: 15px;
 }
 
-.about li {
+.dinos li {
 	margin-right: 25px;
 	zoom: 0.7;
 }
@@ -282,12 +279,12 @@ header .lg-menu li a {
 }
 
 .contact .col-left {
-	width: 45%;
+	width: 50%;
 }
 
 .contact .col-right {
 	width: 55%;
-	margin-left: 10%;
+	margin-left: 5%;
 }
 
 .contact form {
@@ -355,7 +352,7 @@ input[type="submit"] {
 /* Footer */
 
 footer {
-	padding: 4vh 2vw;
+	padding: 3vh 3.5vw 3vh 2vw;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -367,8 +364,14 @@ footer {
 	align-items: center;
 }
 
-footer img {
-	zoom: 0.7;
+footer p {
+	margin: 0;
+}
+
+footer img {    
+	height: 25px;
+	width: auto;
+	margin-left: 5px;
 }
 
 @media screen and (max-width: 991px) {
@@ -516,7 +519,11 @@ footer img {
 	.services li {
 		display: block;
 		text-align: center;
-		margin: 0 0 20px 0;
+		margin: 0 0 40px 0;
+	}
+
+	.services i {
+		margin: 0 0 15px 0;
 	}
 
 	.services p,
@@ -546,6 +553,36 @@ footer img {
 
 @media screen and (max-width: 991px) {
 
+	header .logo-mini {
+		padding-right: 0;
+		margin-right: 0;
+		border-right: none;
+		display: inline-block;
+	}
+
+	header .logo-mini.logo-mini a {
+		-webkit-transform: none;
+		transform: none;
+		-webkit-transform-origin: unset;
+		transform-origin: unset;
+	}
+
+	header li.logo-mini.logo-mini {
+		display: none;
+	}
+
+	header a, 
+	header a:active, 
+	header a:hover, 
+	header a:visited, 
+	header a:focus {
+		color: #333!important;
+	}
+
+	header .active a {
+	    background: transparent!important;
+	}
+
 	.d-height,
 	.d-height .section-wrapper {
 		min-height: unset;
@@ -564,13 +601,15 @@ footer img {
 	    width: 100%;
 	}
 
-
+	.info-section.service-section {
+		padding: 0;
+	}
 }
 
 
 @media screen and (min-width:992px) && (max-width: 1199px) {
 
-	section, 
+	section, 	
 	.d-height {
 	    padding: 70px 40px 35px;
 	}

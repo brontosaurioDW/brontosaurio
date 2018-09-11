@@ -6,7 +6,7 @@ body {
 
 .d-height {
 	min-height: unset;
-	padding: 10vh 2vw 10vh 4vw;
+	padding: 10vh 4vw 10vh 2vw;
 }
 
 .container {
@@ -90,11 +90,11 @@ body {
 }
 
 .arrows {
-	left: 6vw;
-    top: 50%;
-    right: 2vw;
-    position: absolute;
-    list-style: none;
+	left: 3vw;
+	top: 50%;
+	right: 6vw;
+	position: absolute;
+	list-style: none;
 }
 
 .arrows li {

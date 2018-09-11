@@ -1,0 +1,17 @@
+[31-Aug-2018 19:29:28 UTC] PHP Warning:  require(libs/src/PHPMailer.php): failed to open stream: No such file or directory in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 7
+[31-Aug-2018 19:29:28 UTC] PHP Fatal error:  require(): Failed opening required 'libs/src/PHPMailer.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 7
+[31-Aug-2018 19:31:07 UTC] PHP Warning:  require(libs/src/PHPMailer.php): failed to open stream: No such file or directory in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 10
+[31-Aug-2018 19:31:07 UTC] PHP Fatal error:  require(): Failed opening required 'libs/src/PHPMailer.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 10
+[31-Aug-2018 19:32:33 UTC] PHP Warning:  require(/libs/src/PHPMailer.php): failed to open stream: No such file or directory in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 10
+[31-Aug-2018 19:32:33 UTC] PHP Fatal error:  require(): Failed opening required '/libs/src/PHPMailer.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 10
+[31-Aug-2018 19:33:52 UTC] PHP Notice:  Undefined variable: titulo in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 81
+[09-Sep-2018 00:02:01 UTC] PHP Notice:  Undefined variable: mail in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 100
+[09-Sep-2018 00:02:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function isSMTP() on null in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php:100
+Stack trace:
+#0 {main}
+  thrown in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 100
+[09-Sep-2018 00:11:46 UTC] PHP Notice:  Undefined variable: mail in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 100
+[09-Sep-2018 00:11:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function isSMTP() on null in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php:100
+Stack trace:
+#0 {main}
+  thrown in /home/eyk7yui6kgr9/public_html/sitioBeta/assets/enviar_formulario.php on line 100

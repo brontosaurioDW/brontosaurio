@@ -1,30 +1,33 @@
+$(window).load(function() {
+    $(".se-pre-con").fadeOut("slow");;
+});
+
 $(document).ready(function() {
     $(document).on("scroll", onScroll);
-    $(document).on("scroll", changeMenuColor);
-
-    //smoothscroll
-    $('a[href^="#"]').on('click', function(e) {
+     
+    $('a[href^="#"]').on('click', function (e) {
         e.preventDefault();
-
         $(document).off("scroll");
 
-        var parentItem = $(this).parent('li');
+        $('a').each(function () {
+            $(this).parent('li').removeClass('active');
+        })
 
-        $('li').each(function() {
-            $(this).removeClass('active');
-        });
+        $(this).parent('li').addClass('active');
 
-        $(parentItem).addClass('active');
-
-        var target = this.hash,
-            menu = target;
-
+        var target = this.hash;
         $target = $(target);
         
+        if (target == '#contact' || target == '#portfolio') {
+            $('.menu').addClass('lg-menu');
+        } else {
+            $('.menu').removeClass('lg-menu');
+        }
+
         $('html, body').stop().animate({
-            'scrollTop': $target.offset().top + 10
-        }, 1000, 'swing', function() {
-            window.location.hash = '';
+            'scrollTop': $target.offset().top + 2
+        }, 1000, 'swing', function () {
+            window.location.hash = target;
             $(document).on("scroll", onScroll);
         });
     });
@@ -61,22 +64,21 @@ $(document).ready(function() {
     
     /*  PARALLAX  */
     var s = skrollr.init({
-        forceHeight: false
+        forceHeight: true
     });
 
-    if ($(window).width() > 991) {
+    /*if ($(window).width() > 1199) {
         Animate();
     }
 
     $(window).on('scroll', function(event) {
-        if ($(window).width() > 991) {
+        if ($(window).width() > 1199) {
             Animate();
         }
-    });
+    });*/
 });
 
-function Animate() {
-    /*  ANIMATE with AOS */
+/*function Animate() {
     AOS.init({
         disable: false,
         startEvent: 'DOMContentLoaded',
@@ -91,37 +93,18 @@ function Animate() {
         mirror: false,
         anchorPlacement: 'top-bottom',
     });
-}
+}*/
 
 function onScroll(event) {
-    var scrollPos = $(document).scrollTop();
-    $('.menu li').each(function() {
-        var currLink = $(this).find('a');
-        var refElement = $(currLink.attr("href"));
-        if (refElement.position().top <= scrollPos + 10 && refElement.position().top + refElement.height() > scrollPos) {
-            $('.menu li').removeClass("active");
-            $(this).addClass("active");
-        } else {
-            $(this).removeClass("active");
+    var scrollPosition = $(document).scrollTop();
+    $('nav a').each(function () {
+        var currentLink = $(this);
+        var refElement = $(currentLink.attr("href"));
+        if (refElement.position().top - 10 <= scrollPosition && refElement.position().top - 10 + refElement.height() > scrollPosition) {
+            $('nav ul li').removeClass("active");
+            currentLink.parent('li').addClass("active");
+        } else{
+            currentLink.parent('li').removeClass("active");
         }
     });
-
-    if ($(window).scrollTop() > 800) {}
 }
-
-function changeMenuColor() {
-
-    var scrollPos = $(document).scrollTop();
-
-    var portfolioSection    = $('#portfolio').position().top + 10,
-        porfolioHeight      = $('#portfolio').outerHeight(),
-        contactSection      = $('#contact').position().top + 10,
-        contactHeight       = $('#contact').outerHeight();
-
-    if (portfolioSection <= scrollPos && portfolioSection + porfolioHeight > scrollPos) {
-        $('.menu').removeClass('lg-menu');
-    } else {
-        $('.menu').addClass('lg-menu');
-    }
-}
-
